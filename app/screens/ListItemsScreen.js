@@ -1,28 +1,45 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import Card from "../components/Card";
+import Screen from "../components/Screen";
+import colors from "../config/colors";
+
+const listItems = [
+  {
+    id: 1,
+    title: "Red jacket for sales!",
+    price: 100,
+    image: require("../assets/jacket.jpg"),
+  },
+  {
+    id: 2,
+    title: "Couch best seller!",
+    price: 700,
+    image: require("../assets/couch.jpg"),
+  },
+];
 function ListItemsScreen(props) {
   return (
-    <View style={styles.container}>
-      <Card
-        title="Red jacket for sales!"
-        subTitle="$100"
-        image={require("../assets/jacket.jpg")}
+    <Screen style={styles.container}>
+      <FlatList
+        keyExtractor={(listItems) => listItems.id.toString()}
+        data={listItems}
+        renderItem={({ item }) => (
+          <Card
+            title={item.title}
+            subTitle={"$" + item.price}
+            image={item.image}
+          />
+        )}
       />
-      <Card
-        title="Couch best seller!"
-        subTitle="$700"
-        image={require("../assets/couch.jpg")}
-      />
-    </View>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#f8f4f4",
+    backgroundColor: colors.light,
     padding: 20,
-    paddingTop: 100,
   },
 });
 
