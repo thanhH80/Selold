@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  TextInput,
-  StyleSheet,
-  View,
-  Platform,
-  Modal,
-  TouchableWithoutFeedback,
-  Button,
-} from "react-native";
+import { TextInput, StyleSheet, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 // dat ten gi cung duoc
@@ -16,16 +8,16 @@ import defaultStyles from "../config/styles";
 function AppTextInput({ iconName, ...otherProps }) {
   return (
     <View style={styles.container}>
-      <View style={styles.icon}>
-        {iconName && (
-          <MaterialCommunityIcons
-            color={defaultStyles.colors.medium}
-            size={20}
-            name={iconName}
-          />
-        )}
-      </View>
+      {iconName && (
+        <MaterialCommunityIcons
+          color={defaultStyles.colors.medium}
+          name={iconName}
+          size={20}
+          style={styles.icon}
+        />
+      )}
       <TextInput
+        placeholderTextColor={defaultStyles.colors.medium}
         style={[defaultStyles.text, { flex: 1 }]}
         {...otherProps}
       ></TextInput>

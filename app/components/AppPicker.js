@@ -21,6 +21,11 @@ function AppPicker({
   placehoder,
   selectedItem,
 }) {
+  /**
+   * @param: items: data for Flatlist after touched Picker
+   * @param: placeholder: placeholder for Picker
+   * @event: onSelectedItem and selectedItem
+   */
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
@@ -34,9 +39,12 @@ function AppPicker({
               style={styles.icon}
             />
           )}
-          <AppText style={styles.text}>
-            {selectedItem ? selectedItem.label : placehoder}
-          </AppText>
+          {selectedItem ? (
+            <AppText style={styles.text}>{selectedItem.label}</AppText>
+          ) : (
+            <AppText style={styles.placehoder}>{placehoder}</AppText>
+          )}
+
           <MaterialCommunityIcons
             color={defaultStyles.colors.medium}
             size={20}
@@ -44,6 +52,8 @@ function AppPicker({
           />
         </View>
       </TouchableWithoutFeedback>
+
+      {/* Modal */}
       <Modal visible={modalVisible} animationType="slide">
         <Screen>
           <AppButton
@@ -83,6 +93,10 @@ const styles = StyleSheet.create({
   icon: {
     justifyContent: "center",
     marginRight: 10,
+  },
+  placehoder: {
+    flex: 1,
+    color: defaultStyles.colors.medium,
   },
   text: {
     flex: 1,

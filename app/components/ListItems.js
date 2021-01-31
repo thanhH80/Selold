@@ -1,6 +1,8 @@
 import React from "react";
 import { Image, View, StyleSheet, TouchableHighlight } from "react-native";
-import colors from "../config/colors";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+import defaultStyles from "../config/styles";
 import AppText from "./AppText";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 function ListItems({
@@ -10,18 +12,35 @@ function ListItems({
   ImageComponent,
   onPress,
   renderRightActions,
+  showChevron,
 }) {
   return (
     <Swipeable renderRightActions={renderRightActions}>
-      <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
+      <TouchableHighlight
+        underlayColor={defaultStyles.colors.light}
+        onPress={onPress}
+      >
         <View style={styles.container}>
           {ImageComponent}
           {/* this style will be called if add an image */}
           {image && <Image style={styles.image} source={image}></Image>}
           <View style={styles.detailContainer}>
-            <AppText style={styles.title}>{title}</AppText>
-            {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
+            <AppText numberOfLine={20} style={styles.title}>
+              {title}
+            </AppText>
+            {subTitle && (
+              <AppText numberOfLine={20} style={styles.subTitle}>
+                {subTitle}
+              </AppText>
+            )}
           </View>
+          {showChevron ? (
+            <MaterialCommunityIcons
+              color={defaultStyles.colors.medium}
+              name="chevron-right"
+              size={20}
+            />
+          ) : null}
         </View>
       </TouchableHighlight>
     </Swipeable>
@@ -30,9 +49,10 @@ function ListItems({
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: "center",
     flexDirection: "row",
     padding: 10,
-    backgroundColor: colors.white,
+    backgroundColor: defaultStyles.colors.white,
   },
   image: {
     height: 70,
@@ -40,6 +60,7 @@ const styles = StyleSheet.create({
     borderRadius: 35,
   },
   detailContainer: {
+    flex: 1,
     marginLeft: 10,
     justifyContent: "center",
   },
@@ -50,7 +71,7 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontSize: 14,
-    color: colors.medium,
+    color: defaultStyles.colors.medium,
   },
 });
 

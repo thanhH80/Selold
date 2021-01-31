@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 import AppText from "../components/AppText";
 import ListItems from "../components/ListItems";
-import colors from "../config/colors";
+import defaultStyles from "../config/styles";
 
 function ListItemDetailsScreen(props) {
   return (
@@ -17,7 +17,7 @@ function ListItemDetailsScreen(props) {
         <View style={styles.userContainer}>
           <ListItems
             title="Hoang Hai thanh"
-            subTitle="5 Listings"
+            subTitle="5 Listing(s)"
             image={require("../assets/my-avt.jpg")}
           />
         </View>
@@ -36,10 +36,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: "300",
+    fontWeight: "500",
   },
   price: {
-    color: colors.secondary,
+    color: defaultStyles.colors.secondary,
     fontWeight: "bold",
     fontSize: 20,
     marginVertical: 10,
