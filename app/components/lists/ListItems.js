@@ -1,10 +1,10 @@
 import React from "react";
 import { Image, View, StyleSheet, TouchableHighlight } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
-import defaultStyles from "../config/styles";
-import AppText from "./AppText";
 import Swipeable from "react-native-gesture-handler/Swipeable";
+
+import defaultStyles from "../../config/styles";
+import Text from "../Text";
 function ListItems({
   title,
   subTitle,
@@ -25,13 +25,13 @@ function ListItems({
           {/* this style will be called if add an image */}
           {image && <Image style={styles.image} source={image}></Image>}
           <View style={styles.detailContainer}>
-            <AppText numberOfLine={20} style={styles.title}>
+            <Text numberOfLine={20} style={styles.title}>
               {title}
-            </AppText>
+            </Text>
             {subTitle && (
-              <AppText numberOfLine={20} style={styles.subTitle}>
+              <Text numberOfLine={20} style={styles.subTitle}>
                 {subTitle}
-              </AppText>
+              </Text>
             )}
           </View>
           {showChevron ? (

@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import * as Yup from "yup";
 
-import { AppForm, AppFormField, SubmitButton } from "../components/forms";
+import { Form, FormField, SubmitButton } from "../components/forms";
 import Screen from "../components/Screen";
 
 function RegisterScreen(props) {
@@ -13,20 +13,21 @@ function RegisterScreen(props) {
   });
   return (
     <Screen style={styles.container}>
-      <AppForm
+      <Image style={styles.logo} source={require("../assets/logo.png")} />
+      <Form
         initialValues={{ name: "", email: "", password: "" }}
         validationSchema={validationSchema}
         onSubmit={(item) => console.log(item)} //this is onPress event
       >
         {/* AppFormField has all props of AppTextInput and has errorMessage */}
-        <AppFormField
+        <FormField
           autoCapitalize="none"
           autoCorrect={false}
           iconName="account"
           name="name"
           placeholder="Name"
         />
-        <AppFormField
+        <FormField
           autoCapitalize="none"
           autoCorrect={false}
           keyboardType="email-address"
@@ -34,7 +35,7 @@ function RegisterScreen(props) {
           name="email"
           placeholder="Email"
         />
-        <AppFormField
+        <FormField
           autoCapitalize="none"
           autoCorrect={false}
           secureTextEntry
@@ -44,7 +45,7 @@ function RegisterScreen(props) {
         />
         {/* Already handel submit, so dont need onPress event */}
         <SubmitButton title="Register" />
-      </AppForm>
+      </Form>
     </Screen>
   );
 }
@@ -52,6 +53,12 @@ function RegisterScreen(props) {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+  },
+  logo: {
+    width: 250,
+    height: 80,
+    marginVertical: 50,
+    alignSelf: "center",
   },
 });
 export default RegisterScreen;

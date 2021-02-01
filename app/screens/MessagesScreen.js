@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { FlatList } from "react-native";
 
-import { FlatList, StyleSheet, View } from "react-native";
-import ListItemDeleteAction from "../components/ListItemDeleteAction";
-import ListItems from "../components/ListItems";
-import ListItemSeparator from "../components/ListItemSeparator";
-
+import {
+  ListItems,
+  ListItemDeleteAction,
+  ListItemSeparator,
+} from "../components/lists";
 import Screen from "../components/Screen";
 
 const initialMessages = [
@@ -89,7 +90,5 @@ function MessagesScreen(props) {
     </Screen>
   );
 }
-
-const styles = StyleSheet.create({});
 
 export default MessagesScreen;

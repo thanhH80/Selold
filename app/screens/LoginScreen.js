@@ -3,7 +3,7 @@ import { Image, StyleSheet } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../components/Screen";
-import { AppForm, AppFormField, SubmitButton } from "../components/forms";
+import { Form, FormField, SubmitButton } from "../components/forms";
 
 //element in shape() must have the same name with inititalValues in Formik
 const validationSchema = Yup.object().shape({
@@ -21,14 +21,14 @@ function LoginScreen(props) {
   return (
     <Screen style={styles.container}>
       <Image style={styles.logo} source={require("../assets/logo.png")} />
-      <AppForm
+      <Form
         initialValues={{ email: "", password: "" }}
         validationSchema={validationSchema}
         onSubmit={(item) => console.log(item)}
       >
         {/* AppFormField(name, ...otherProps) also has onBlur() and onChangedText() event
               => to Validate form */}
-        <AppFormField
+        <FormField
           autoCorrect={false}
           autoCapitalize="none"
           keyboardType="email-address"
@@ -36,7 +36,7 @@ function LoginScreen(props) {
           placeholder="Email"
           name="email"
         />
-        <AppFormField
+        <FormField
           autoCorrect={false}
           autoCapitalize="none"
           iconName="lock"
@@ -45,7 +45,7 @@ function LoginScreen(props) {
           name="password"
         />
         <SubmitButton title="Login" />
-      </AppForm>
+      </Form>
     </Screen>
   );
 }
@@ -57,8 +57,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 250,
     height: 80,
-    marginBottom: 20,
-    marginTop: 50,
+    marginVertical: 50,
     alignSelf: "center",
   },
 });

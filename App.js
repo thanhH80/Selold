@@ -6,12 +6,11 @@ import ViewImageScreen from "./app/screens/ViewImageScreen";
 import MessagesScreen from "./app/screens/MessagesScreen";
 import AccountScreen from "./app/screens/AccountScreen";
 
-import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
-import ListingEditScreen from "./app/screens/ListingEditScreen";
+import ListingEditScreen from "./app/screens/ListingEditScreen"; //dang co van de
 
 export default function App() {
-  return <MessagesScreen />;
+  return <ListingEditScreen />;
 }

@@ -1,11 +1,10 @@
 import React from "react";
-import { View, StyleSheet, Image, FlatList } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 
-import ListItems from "../components/ListItems";
-import AppIcon from "../components/AppIcon";
+import Icon from "../components/Icon";
 import colors from "../config/colors";
 import Screen from "../components/Screen";
-import ListItemSeparator from "../components/ListItemSeparator";
+import { ListItemSeparator, ListItems } from "../components/lists";
 
 const menuItems = [
   {
@@ -44,7 +43,7 @@ function AccountScreen(props) {
             <ListItems
               title={item.title}
               ImageComponent={
-                <AppIcon
+                <Icon
                   name={item.icon.iconName}
                   backgroundColor={item.icon.backgroundColor}
                 />
@@ -58,7 +57,7 @@ function AccountScreen(props) {
         <ListItems
           title="Log Out"
           ImageComponent={
-            <AppIcon backgroundColor={colors.lightyellow} name="logout" />
+            <Icon backgroundColor={colors.lightyellow} name="logout" />
           }
         />
       </View>

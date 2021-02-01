@@ -3,7 +3,7 @@ import { View } from "react-native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
-function AppIcon({
+function Icon({
   name,
   size = 40,
   backgroundColor = colors.black,
@@ -24,4 +24,4 @@ function AppIcon({
     </View>
   );
 }
-export default AppIcon;
+export default Icon;
