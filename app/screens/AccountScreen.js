@@ -5,6 +5,7 @@ import Icon from "../components/Icon";
 import colors from "../config/colors";
 import Screen from "../components/Screen";
 import { ListItemSeparator, ListItems } from "../components/lists";
+import routes from "../navigation/routes";
 
 const menuItems = [
   {
@@ -22,10 +23,11 @@ const menuItems = [
       backgroundColor: colors.secondary,
     },
     title: "My Messages",
+    targetScreen: "Messages",
   },
 ];
 
-function AccountScreen(props) {
+function AccountScreen({ navigation }) {
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
@@ -41,6 +43,7 @@ function AccountScreen(props) {
           data={menuItems}
           renderItem={({ item }) => (
             <ListItems
+              onPress={() => navigation.navigate(item.targetScreen)}
               title={item.title}
               ImageComponent={
                 <Icon
@@ -48,6 +51,7 @@ function AccountScreen(props) {
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
+              showChevron
             />
           )}
           ItemSeparatorComponent={ListItemSeparator}
@@ -59,6 +63,7 @@ function AccountScreen(props) {
           ImageComponent={
             <Icon backgroundColor={colors.lightyellow} name="logout" />
           }
+          onPress={() => navigation.navigate("Logout")}
         />
       </View>
     </Screen>

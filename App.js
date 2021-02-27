@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 
+import AuthNavigation from "./app/navigation/AuthNavigation";
+import navigationTheme from "./app/navigation/navigationTheme";
+import AppNavigator from "./app/navigation/AppNavigator";
 import ListItemsScreen from "./app/screens/ListItemsScreen";
-import ListItemDetailsScreen from "./app/screens/ListItemDetailsScreen";
-import ViewImageScreen from "./app/screens/ViewImageScreen";
-import MessagesScreen from "./app/screens/MessagesScreen";
-import AccountScreen from "./app/screens/AccountScreen";
-
-import LoginScreen from "./app/screens/LoginScreen";
-import WelcomeScreen from "./app/screens/WelcomeScreen";
-import RegisterScreen from "./app/screens/RegisterScreen";
-import ListingEditScreen from "./app/screens/ListingEditScreen"; //dang co van de
 
 export default function App() {
-  return <ListingEditScreen />;
+  return (
+    <NavigationContainer theme={navigationTheme}>
+      <AppNavigator />
+    </NavigationContainer>
+  );
 }

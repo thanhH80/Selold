@@ -25,10 +25,10 @@ function Picker({
   width = "100%",
 }) {
   /**
-   * @description: Picker for all pickerItem in app
-   * @param: items: data for Flatlist after touched Picker
-   * @param: placeholder: placeholder for Picker
-   * @event: onSelectedItem and selectedItem
+   * @description Picker for all pickerItem in app
+   * @param items data for Flatlist after touched Picker
+   * @param placeholder placeholder for Picker
+   * @event onSelectedItem and selectedItem
    */
   const [modalVisible, setModalVisible] = useState(false);
   return (

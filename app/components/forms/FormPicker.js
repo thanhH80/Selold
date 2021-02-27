@@ -4,6 +4,13 @@ import { useFormikContext } from "formik";
 import Picker from "../Picker";
 import ErrorMessage from "./ErrorMessage";
 
+/**
+ * @description function to display the AppPicker in the Formik
+ * @param name name of the filed
+ * @param items items for Flatlist
+ * @param placeholder
+ * @param PickerItemComponent
+ */
 function FormPicker({
   name,
   items,
@@ -13,13 +20,6 @@ function FormPicker({
   placeholder,
   ...otherProps
 }) {
-  /**
-   * @description: function to display the AppPicker in the Formik
-   * @param: name: name of the filed
-   * @param: items: items for Flatlist
-   * @param: placeholder
-   * @param: PickerItemComponent
-   */
   const { setFieldValue, values, errors, touched } = useFormikContext();
   return (
     <>

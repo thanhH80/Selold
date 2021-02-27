@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 
 import CategoryPickerItem from "../components/CategoryPickerItem";
 import { Form, FormField, FormPicker, SubmitButton } from "../components/forms";
+import FormImagePicker from "../components/forms/FormImagePicker";
 import Screen from "../components/Screen";
+import userLocation from "../components/hooks/userLocation";
 
 const categories = [
   {
@@ -56,18 +58,27 @@ const categories = [
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
   price: Yup.number().required().min(1).max(10000).label("Price"),
-  category: Yup.object().required().label("Category"),
-  description: Yup.string().label("Description"),
+  category: Yup.object().required().label("Category").nullable(),
+  description: Yup.string().required().label("Description"),
+  image: Yup.array().min(1, "Please select at least 1 image"),
 });
 
 function ListingEditScreen(props) {
+  const location = userLocation();
   return (
     <Screen style={styles.container}>
       <Form
-        onSubmit={(item) => console.log(item)}
+        onSubmit={(item) => console.log(location)}
         validationSchema={validationSchema}
-        initialValues={{ title: "", price: 0, category: null, description: "" }}
+        initialValues={{
+          title: "",
+          price: 0,
+          category: null,
+          description: "",
+          image: [],
+        }}
       >
+        <FormImagePicker name="image" />
         <FormField
           iconName="pencil"
           maxLenght={255}
