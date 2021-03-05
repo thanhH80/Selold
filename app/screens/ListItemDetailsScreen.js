@@ -8,7 +8,10 @@ function ListItemDetailsScreen({ route }) {
   const listing = route.params;
   return (
     <View>
-      <Image style={styles.image} source={listing.image}></Image>
+      <Image
+        style={styles.image}
+        source={{ uri: listing.images[0].url }}
+      ></Image>
       <View style={styles.detailContainer}>
         <Text style={styles.title}>{listing.title} </Text>
         <Text style={styles.price}>${listing.price}</Text>

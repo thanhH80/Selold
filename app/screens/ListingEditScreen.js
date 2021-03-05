@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 
 import CategoryPickerItem from "../components/CategoryPickerItem";
+import listingsApi from "../api/listings";
 import { Form, FormField, FormPicker, SubmitButton } from "../components/forms";
 import FormImagePicker from "../components/forms/FormImagePicker";
 import Screen from "../components/Screen";
@@ -59,26 +60,37 @@ const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
   price: Yup.number().required().min(1).max(10000).label("Price"),
   category: Yup.object().required().label("Category").nullable(),
-  description: Yup.string().required().label("Description"),
-  image: Yup.array().min(1, "Please select at least 1 image"),
+  description: Yup.string().label("Description"),
+  images: Yup.array().min(1, "Please select at least 1 image"),
 });
 
 function ListingEditScreen(props) {
   const location = userLocation();
+  const [upload, setUpload] = useState(false);
+
+  const handelSubmit = async (item) => {
+    const result = await listingsApi.addItem(
+      { ...item, location },
+      (progress) => console.log(progress)
+    );
+    if (!result.ok) return alert("Could't save the listing.");
+    alert("Succes");
+  };
+
   return (
     <Screen style={styles.container}>
       <Form
-        onSubmit={(item) => console.log(location)}
+        onSubmit={handelSubmit}
         validationSchema={validationSchema}
         initialValues={{
           title: "",
           price: 0,
           category: null,
           description: "",
-          image: [],
+          images: [],
         }}
       >
-        <FormImagePicker name="image" />
+        <FormImagePicker name="images" />
         <FormField
           iconName="pencil"
           maxLenght={255}
